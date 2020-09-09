@@ -21,4 +21,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource("music", AlbumController::class);
+Route::resource("home", AlbumController::class);

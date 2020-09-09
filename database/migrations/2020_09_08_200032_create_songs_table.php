@@ -17,19 +17,22 @@ class CreateSongsTable extends Migration
           // Preset id
           $table->id();
 
-          // Foreign keys ->albums
-          $table->unsignedBigInteger("album_id");
-          $table->foreign("album_id")
-                ->references("id")
-                ->on("albums");
-
           // Title
           $table->string("title");
 
           // Genre
           $table->string("genre");
 
-          // Preset created_at $ updated_at
+          // Duration
+          $table->float("duration", 5, 2);
+
+          // Foreign key Album_id
+          $table->unsignedBigInteger("album_id");
+          $table->foreign("album_id")
+                ->references("id")
+                ->on("albums");
+
+          // Preset created_at and updated_at
           $table->timestamps();
         });
     }

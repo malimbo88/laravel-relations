@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// Use Album Model class
-use App\Album;
+// Use Album model class
+use App\Models\Album;
 
 class AlbumController extends Controller
 {
@@ -16,8 +16,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-      $albums = Album::all();
-        return view("albums.index", compact("albums"));
+        $albums = Album::all();
+        return view("music.index", compact("album"));
     }
 
     /**
@@ -47,9 +47,9 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show($id)
     {
-        return view("albums.show", compact("album"));
+        //
     }
 
     /**

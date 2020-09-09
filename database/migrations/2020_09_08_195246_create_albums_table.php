@@ -20,13 +20,19 @@ class CreateAlbumsTable extends Migration
             // Title
             $table->string("title");
 
+            // Title
+            $table->text("cover");
+
             // Artist
             $table->string("artist");
 
             // Year
-            $table->integer("year");
+            $table->year("year");
 
-            // Preset created_at $ updated_at
+            //Description
+            $table->text("description");
+
+            // Preset created_at and updated_at
             $table->timestamps();
         });
     }

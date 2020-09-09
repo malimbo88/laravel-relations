@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Use AlbumController class
+use App\Http\Controllers\AlbumController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource("music", AlbumController::class);

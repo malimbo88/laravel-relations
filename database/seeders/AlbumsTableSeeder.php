@@ -1,12 +1,14 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-// Use Faker
+//Use Faker
 use Faker\Generator as Faker;
 
-// Use Album Model
-use App\Album;
+//Use Album class model
+use App\Models\Album;
 
 class AlbumsTableSeeder extends Seeder
 {
@@ -17,11 +19,17 @@ class AlbumsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 3; $i++) {
+        // Generate new Album rows into Database
+        for ($i=0; $i < 10; $i++) {
           $new_album = new Album();
           $new_album->title = $faker->word;
+          $new_album->cover = $faker->imageUrl(800, 600);
           $new_album->artist = $faker->name;
           $new_album->year = $faker->year();
+          $new_album->description = $faker->paragraph();
+
+          // Save data
+          $new_album->save();
         }
     }
 }

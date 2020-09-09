@@ -17,7 +17,7 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = Album::all();
-        return view("albums.index", compact("albums"));
+        return view("music.index", compact("albums"));
     }
 
     /**
@@ -47,9 +47,9 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Album $album)
     {
-        //
+        return view("music.show", compact("album"));
     }
 
     /**

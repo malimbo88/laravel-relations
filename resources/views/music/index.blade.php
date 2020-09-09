@@ -1,7 +1,5 @@
 {{-- View index.blade.php --}}
-@php
-  dd($albums);
-@endphp
+
 {{-- Albums --}}
 <div class="albums">
   {{-- Album List --}}
@@ -21,7 +19,7 @@
           {{-- Cover --}}
           <li class="cover">
             <div class="cover_img">
-              <img src="{{ $single_album->img}}" alt="">
+              <img src="{{ $single_album->cover}}" alt="">
             </div>
           </li>
           {{-- end Cover --}}
@@ -38,11 +36,13 @@
           </li>
           {{-- end Year --}}
 
-          {{-- Description --}}
-          <li class="description">
-            <p>Title: {{ $single_album->description }}</p>
+          {{-- Route to Show --}}
+          <li class="show_album">
+            <a href="{{route("albums.show", $single_album)}}">
+              <span>View album</span>
+            </a>
           </li>
-          {{-- end Description --}}
+          {{-- end Route to Show --}}
 
         </ul>
       </li>

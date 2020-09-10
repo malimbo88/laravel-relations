@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 // Use Album model class
 use App\Models\Album;
 
+// Use Song model class
+use App\Models\Song;
+
 class AlbumController extends Controller
 {
     /**
@@ -17,6 +20,7 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = Album::all();
+
         return view("music.index", compact("albums"));
     }
 
@@ -58,9 +62,9 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Album $album)
     {
-        //
+        return view("music.edit", compact("album"));
     }
 
     /**
@@ -70,9 +74,25 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Album $album)
     {
-        //
+        // Validate $request data
+        $request->validate([
+          "title" => "required|max:255",
+          "cover" => "required",
+          "artist" => "required",
+          "year" => "required|integer|max:2020",
+          "description" => "required",
+        ]);
+
+        // All data from $request
+        $data = $request->all();
+
+        // Update data
+        $album->update($data);
+
+        // Redirect to View albums.show
+        return redirect()->route("albums.show", $album);
     }
 
     /**

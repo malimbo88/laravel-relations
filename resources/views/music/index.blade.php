@@ -44,6 +44,14 @@
           </li>
           {{-- end Route to Show --}}
 
+          {{-- Route to Edit --}}
+          <li class="show_album">
+            <a href="{{route("albums.edit", $single_album)}}">
+              <span>Update album</span>
+            </a>
+          </li>
+          {{-- end Route to Edit --}}
+
         </ul>
       </li>
       {{-- end Single album --}}

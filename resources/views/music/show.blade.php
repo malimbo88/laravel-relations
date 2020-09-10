@@ -42,6 +42,26 @@
   </ul>
   {{-- end Album infos --}}
 
+  {{-- Music Genre --}}
+  @if (!$album->genres->isEmpty())
+    <div class="musicgenre">
+      <h2>Genre:</h2>
+
+        {{-- All the genres related to this album --}}
+        @foreach ($album->genres as $genre)
+          <ul>
+            <li>
+              <h2>{{ $genre->musicgenre }}</h2>
+            </li>
+          </ul>
+        @endforeach
+        {{-- end All the genres related to this album --}}
+        
+      </div>
+    @endif
+    {{-- Music Genre --}}
+
+
   {{-- Songs list --}}
   <div class="songs">
     <h2>Songs:</h2>
@@ -51,9 +71,6 @@
       @foreach ($album->songs as $single_song)
         <li>
           <h4>Song title: {{ $single_song->title }}</h4>
-        </li>
-        <li>
-          <span>Song genre: {{ $single_song->genre }}</span>
         </li>
         <li>
           <span>Song duration: {{ $single_song->duration }} minutes</span>

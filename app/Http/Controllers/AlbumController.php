@@ -56,7 +56,6 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        dd($album->genres);
         return view("music.show", compact("album"));
     }
 

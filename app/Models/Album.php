@@ -26,7 +26,7 @@ class Album extends Model
 
     // Artists method
     // relation with Artist class model
-    public function artists() {
-      return $this->belongToMany("App\Models\Artist");
+    public function genres() {
+      return $this->belongsToMany("App\Models\Genre");
     }
 }

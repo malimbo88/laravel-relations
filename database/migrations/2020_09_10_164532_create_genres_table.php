@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtistsTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateArtistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('artists', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
           // Preset id
           $table->id();
 
-          // Name
-          $table->string("name");
-
-          // Date of birth
-          $table->year("birthyear");
-
-          // Date of birth
-          $table->string("profession");
+          // Music Genre
+          $table->string("musicgenre");
 
           // Preset created_at and updated_at
           $table->timestamps();
@@ -38,6 +32,6 @@ class CreateArtistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artists');
+        Schema::dropIfExists('genres');
     }
 }

@@ -10,6 +10,9 @@ use App\Models\Album;
 // Use Song model class
 use App\Models\Song;
 
+// Use Genre model class
+use App\Models\Genre;
+
 class AlbumController extends Controller
 {
     /**
@@ -53,6 +56,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+        dd($album->genres);
         return view("music.show", compact("album"));
     }
 

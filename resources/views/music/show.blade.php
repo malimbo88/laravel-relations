@@ -56,7 +56,7 @@
           </ul>
         @endforeach
         {{-- end All the genres related to this album --}}
-        
+
       </div>
     @endif
     {{-- Music Genre --}}
@@ -69,11 +69,9 @@
 
       {{-- All the songs related to this album --}}
       @foreach ($album->songs as $single_song)
-        <li>
-          <h4>Song title: {{ $single_song->title }}</h4>
-        </li>
-        <li>
-          <span>Song duration: {{ $single_song->duration }} minutes</span>
+        <li class="single_song">
+          <h4 class="song_title">Song title: {{ $single_song->title }}</h4>
+          <span class="song_duration">Song duration: {{ $single_song->duration }} minutes</span>
         </li>
       @endforeach
       {{-- end All the songs related to this album --}}
@@ -85,8 +83,16 @@
 </div>
 {{-- end Single album --}}
 
+{{-- Route to edit --}}
+<div class="edit_album">
+  <a href="{{ route("albums.edit", $album) }}">
+    <span>Update album</span>
+  </a>
+</div>
+{{-- end Route to edit --}}
+
 {{-- Route to Index --}}
-<div class="show_album">
+<div class="index_albums">
   <a href="{{ route("albums.index") }}">
     <span>Show more albums</span>
   </a>

@@ -22,8 +22,10 @@ class AlbumController extends Controller
      */
     public function index()
     {
+        // All albums from Album model class
         $albums = Album::all();
 
+        //Return to View music.index
         return view("music.index", compact("albums"));
     }
 
@@ -56,6 +58,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+        //Return to View music.show
         return view("music.show", compact("album"));
     }
 
@@ -67,7 +70,14 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        return view("music.edit", compact("album"));
+        // All genres from Genre model class
+        $genres = Genre::all();
+
+        //Return to View music.edit
+        return view("music.edit", [
+          "album" => $album,
+          "genres" => $genres,
+        ]);
     }
 
     /**
@@ -90,6 +100,15 @@ class AlbumController extends Controller
 
         // All data from $request
         $data = $request->all();
+
+        // If $data["genres"] isset 
+        if (isset($data["genres"])) {
+          // Attach genres from array data
+          $album->genres()->sync($data["genres"]);
+        } else {
+          // Detach genres from array data
+          $album->genres()->detach();
+        }
 
         // Update data
         $album->update($data);

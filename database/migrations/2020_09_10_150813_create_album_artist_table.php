@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAlbumArtistTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('album_artist', function (Blueprint $table) {
+
+            // Relations to Albums table
+            $table->unsignedBigInteger("album_id");
+            $table->foreign("album_id")
+                  ->references("id")
+                  ->on("albums");
+
+            // Relations to Artists table
+            $table->unsignedBigInteger("artist_id");
+            $table->foreign("artist_id")
+                  ->references("id")
+                  ->on("artists");
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('album_artist');
+    }
+}
